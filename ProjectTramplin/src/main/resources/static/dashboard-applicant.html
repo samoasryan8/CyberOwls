@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Կաբինետ - Դիմորդ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900">
+    
+    <!-- Նավիգացիա -->
+    <nav class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 md:px-8">
+        <div class="flex items-center gap-2 text-blue-600 font-bold text-xl tracking-tight">
+            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white">Т</div>
+            Трамплин
+        </div>
+        <div class="flex items-center gap-4" id="navAuth"></div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- Ձախ վահանակ (Sidebar) -->
+        <div class="w-full md:w-64 shrink-0">
+            <div class="bg-white rounded-2xl border border-gray-200 p-6 mb-4 text-center shadow-sm">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-3" id="userAvatar">Ա</div>
+                <h2 class="font-bold text-lg" id="userName">Անուն</h2>
+                <p class="text-sm text-gray-500">Դիմորդ (Ուսանող)</p>
+            </div>
+            <nav class="space-y-1">
+                <button onclick="showTab('resume')" id="tab-resume" class="w-full text-left px-4 py-2.5 rounded-xl bg-blue-50 text-blue-700 font-medium transition-colors">Իմ Ռեզյումեն</button>
+                <button onclick="showTab('apps')" id="tab-apps" class="w-full text-left px-4 py-2.5 rounded-xl text-gray-600 hover:bg-gray-50 font-medium transition-colors">Իմ Դիմումները</button>
+                <button onclick="showTab('network')" id="tab-network" class="w-full text-left px-4 py-2.5 rounded-xl text-gray-600 hover:bg-gray-50 font-medium transition-colors">Ընկերներ (Ցանց)</button>
+            </nav>
+        </div>
+
+        <!-- Բովանդակություն -->
+        <div class="flex-1 bg-white rounded-2xl border border-gray-200 p-6 shadow-sm min-h-[500px]">
+            
+            <!-- Ռեզյումե -->
+            <div id="content-resume">
+                <h3 class="text-xl font-bold mb-6 text-gray-900">Իմ Ռեզյումեն</h3>
+                <form class="space-y-5 max-w-2xl">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Մասնագիտություն</label>
+                        <input type="text" placeholder="օր. Java Developer" class="w-full border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Իմ մասին</label>
+                        <textarea placeholder="Պատմեք ձեր փորձի և նպատակների մասին..." class="w-full border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none h-32"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Հմտություններ</label>
+                        <input type="text" placeholder="Java, SQL, React (անջատեք ստորակետով)" class="w-full border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <button type="button" class="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 font-medium">Պահպանել Ռեզյումեն</button>
+                </form>
+            </div>
+            
+            <!-- Դիմումներ -->
+            <div id="content-apps" class="hidden">
+                <h3 class="text-xl font-bold mb-6 text-gray-900">Իմ Դիմումները</h3>
+                <div class="space-y-3">
+                    <div class="border border-gray-200 rounded-xl p-4 flex justify-between items-center hover:shadow-md transition-shadow">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Junior Spring Boot Developer</h4>
+                            <p class="text-sm text-gray-500">TechSys Armenia • Դիմել եք՝ 12.10.2023</p>
+                        </div>
+                        <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-medium">Սպասվում է</span>
+                    </div>
+                    <div class="border border-gray-200 rounded-xl p-4 flex justify-between items-center hover:shadow-md transition-shadow">
+                        <div>
+                            <h4 class="font-bold text-gray-900">React Frontend Intern</h4>
+                            <p class="text-sm text-gray-500">GlobalWeb • Դիմել եք՝ 05.10.2023</p>
+                        </div>
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">Ընդունված</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ընկերներ -->
+            <div id="content-network" class="hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-gray-900">Իմ Ընկերները</h3>
+                    <button class="text-blue-600 text-sm font-medium hover:underline">+ Ավելացնել ընկեր</button>
+                </div>
+                <div class="space-y-3">
+                    <div class="border border-gray-200 rounded-xl p-4 flex justify-between items-center">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center font-bold text-lg">Ա</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Արամ Խաչատրյան</h4>
+                                <p class="text-sm text-gray-500">Հետաքրքրություններ: React, Node.js, UI/UX</p>
+                            </div>
+                        </div>
+                        <button class="text-blue-600 text-sm border border-blue-600 px-4 py-1.5 rounded-lg hover:bg-blue-50 font-medium transition-colors">
+                            Խորհուրդ տալ աշխատանք
+                        </button>
+                    </div>
+                    <div class="border border-gray-200 rounded-xl p-4 flex justify-between items-center">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center font-bold text-lg">Մ</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Մարիամ Պողոսյան</h4>
+                                <p class="text-sm text-gray-500">Հետաքրքրություններ: Python, Data Science</p>
+                            </div>
+                        </div>
+                        <button class="text-blue-600 text-sm border border-blue-600 px-4 py-1.5 rounded-lg hover:bg-blue-50 font-medium transition-colors">
+                            Խորհուրդ տալ աշխատանք
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/js/auth.js"></script>
+    <script>
+        // Ստուգում ենք ավտորիզացիան
+        const user = checkAuth(true);
+        if(user.role !== 'APPLICANT') window.location.href = 'index.html';
+        
+        // Տեղադրում ենք օգտատիրոջ տվյալները
+        document.getElementById('userName').innerText = user.name;
+        document.getElementById('userAvatar').innerText = user.name.charAt(0);
+        updateNavbar();
+
+        // Տաբերի փոփոխման լոգիկա
+        function showTab(tab) {
+            ['resume', 'apps', 'network'].forEach(t => {
+                document.getElementById('content-' + t).classList.add('hidden');
+                document.getElementById('tab-' + t).className = 'w-full text-left px-4 py-2.5 rounded-xl text-gray-600 hover:bg-gray-50 font-medium transition-colors';
+            });
+            document.getElementById('content-' + tab).classList.remove('hidden');
+            document.getElementById('tab-' + tab).className = 'w-full text-left px-4 py-2.5 rounded-xl bg-blue-50 text-blue-700 font-medium transition-colors';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+/* Քարտեզի կարգավորումներ */
+#map {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Leaflet Popup-ի գեղեցկացում */
+.custom-popup .leaflet-popup-content-wrapper {
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-popup .leaflet-popup-content {
+    margin: 12px;
+    width: max-content !important;
+}
+
+.custom-popup .leaflet-popup-tip-container {
+    display: none;
+}
+
+/* Թաքցնել Scrollbar-ը, բայց թողնել աշխատող */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Քարտեզի նշանի (Marker) անիմացիա */
+.custom-leaflet-icon div {
+    transition: transform 0.2s ease-in-out, background-color 0.2s;
+}
+.custom-leaflet-icon div:hover {
+    transform: scale(1.1) !important;
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Կաբինետ - Կուրատոր</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-900">
+    
+    <nav class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 md:px-8">
+        <div class="flex items-center gap-2 text-blue-600 font-bold text-xl tracking-tight">
+            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white">Т</div>
+            Трамплин
+        </div>
+        <div class="flex items-center gap-4" id="navAuth"></div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- Ձախ վահանակ -->
+        <div class="w-full md:w-64 shrink-0">
+            <div class="bg-white rounded-2xl border border-gray-200 p-6 mb-4 text-center shadow-sm">
+                <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-3" id="userAvatar">Կ</div>
+                <h2 class="font-bold text-lg" id="userName">Անուն</h2>
+                <p class="text-sm text-gray-500">Համակարգող (Կուրատոր)</p>
+            </div>
+            <nav class="space-y-1">
+                <button onclick="showTab('verify')" id="tab-verify" class="w-full text-left px-4 py-2.5 rounded-xl bg-blue-50 text-blue-700 font-medium transition-colors">Վերիֆիկացիա</button>
+                <button onclick="showTab('users')" id="tab-users" class="w-full text-left px-4 py-2.5 rounded-xl text-gray-600 hover:bg-gray-50 font-medium transition-colors">Օգտատերեր</button>
+                <button onclick="showTab('add_curator')" id="tab-add_curator" class="w-full text-left px-4 py-2.5 rounded-xl text-gray-600 hover:bg-gray-50 font-medium transition-colors hidden">Ավելացնել Կուրատոր</button>
+            </nav>
+        </div>
+
+        <!-- Բովանդակություն -->
+        <div class="flex-1 bg-white rounded-2xl border border-gray-200 p-6 shadow-sm min-h-[500px]">
+            
+            <!-- Վերիֆիկացիա -->
+            <div id="content-verify">
+                <h3 class="text-xl font-bold mb-6 text-gray-900">Սպասող Ընկերություններ</h3>
+                <p class="text-sm text-gray-500 mb-4">Ստուգեք ընկերության ՀՎՀՀ-ն պետական ռեգիստրում նախքան հաստատելը:</p>
+                
+                <div class="space-y-3">
+                    <div class="border border-gray-200 rounded-xl p-4 flex justify-between items-center bg-yellow-50/30">
+                        <div>
+                            <h4 class="font-bold text-gray-900">DataFlow LLC</h4>
+                            <p class="text-sm text-gray-600">ՀՎՀՀ: <span class="font-mono bg-gray-100 px-1 rounded">01234567</span></p>
+                            <p class="text-xs text-gray-500 mt-1">Գրանցվել է՝ 2 ժամ առաջ</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="bg-green-600 text-white px-4 py-1.5 rounded-lg text-sm font-medium hover:bg-green-700">Հաստատել</button>
+                            <button class="bg-red-50 text-red-600 px-4 py-1.5 rounded-lg text-sm font-medium hover:bg-red-100">Մերժել</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Օգտատերեր -->
+            <div id="content-users" class="hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-gray-900">Համակարգի Օգտատերեր</h3>
+                    <input type="text" placeholder="Որոնել..." class="border border-gray-300 px-3 py-1.5 rounded-lg text-sm outline-none focus:border-blue-500">
+                </div>
+                
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-gray-200 text-sm text-gray-500">
+                            <th class="pb-2 font-medium">Անուն / Էլ. փոստ</th>
+                            <th class="pb-2 font-medium">Դեր</th>
+                            <th class="pb-2 font-medium">Կարգավիճակ</th>
+                            <th class="pb-2 font-medium">Գործողություն</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b border-gray-100">
+                            <td class="py-3">
+                                <div class="font-medium text-gray-900">Արամ Խաչատրյան</div>
+                                <div class="text-gray-500">student1@test.com</div>
+                            </td>
+                            <td class="py-3"><span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">Դիմորդ</span></td>
+                            <td class="py-3"><span class="text-green-600">Ակտիվ</span></td>
+                            <td class="py-3"><button class="text-red-500 hover:underline">Արգելափակել</button></td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-3">
+                                <div class="font-medium text-gray-900">TechSys Armenia</div>
+                                <div class="text-gray-500">employer1@test.com</div>
+                            </td>
+                            <td class="py-3"><span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded text-xs">Գործատու</span></td>
+                            <td class="py-3"><span class="text-green-600">Ակտիվ</span></td>
+                            <td class="py-3"><button class="text-red-500 hover:underline">Արգելափակել</button></td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-3">
+                                <div class="font-medium text-gray-900">ԵՊՀ Կարիերայի Կենտրոն</div>
+                                <div class="text-gray-500">curator1@test.com</div>
+                            </td>
+                            <td class="py-3"><span class="bg-purple-50 text-purple-700 px-2 py-1 rounded text-xs">Կուրատոր</span></td>
+                            <td class="py-3"><span class="text-green-600">Ակտիվ</span></td>
+                            <td class="py-3"><button class="text-red-500 hover:underline">Արգելափակել</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Ավելացնել Կուրատոր (Միայն Ադմինի համար) -->
+            <div id="content-add_curator" class="hidden">
+                <h3 class="text-xl font-bold mb-6 text-gray-900">Ավելացնել Նոր Կուրատոր</h3>
+                <p class="text-sm text-gray-500 mb-6">Կուրատորները պատասխանատու են ընկերությունների վերիֆիկացիայի և համակարգի կարգուկանոնի համար:</p>
+                <form onsubmit="event.preventDefault(); alert('Նոր կուրատորը հաջողությամբ ավելացվեց:'); showTab('users');" class="space-y-4 max-w-md">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Անուն կամ ԲՈՒՀ-ի անվանում</label>
+                        <input type="text" required placeholder="օր. ՀԱԱՀ Կարիերայի Կենտրոն" class="w-full border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Էլ. փոստ</label>
+                        <input type="email" required placeholder="curator@university.am" class="w-full border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 font-medium mt-2">
+                        Ստեղծել Կուրատորի Հաշիվ
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/js/auth.js"></script>
+    <script>
+        const user = checkAuth(true);
+        if(user.role !== 'CURATOR' && user.role !== 'ADMIN') window.location.href = 'index.html';
+        
+        document.getElementById('userName').innerText = user.name;
+        document.getElementById('userAvatar').innerText = user.name.charAt(0);
+        
+        if (user.role === 'ADMIN') {
+            document.getElementById('tab-add_curator').classList.remove('hidden');
+        }
+
+        updateNavbar();
+
+        function showTab(tab) {
+            ['verify', 'users', 'add_curator'].forEach(t => {
+                const contentEl = document.getElementById('content-' + t);
+                const tabEl = document.getElementById('tab-' + t);
+                if (contentEl) contentEl.classList.add('hidden');
+                if (tabEl) tabEl.className = 'w-full text-left px-4 py-2.5 rounded-xl text-gray-600 hover:bg-gray-50 font-medium transition-colors' + (t === 'add_curator' && user.role !== 'ADMIN' ? ' hidden' : '');
+            });
+            document.getElementById('content-' + tab).classList.remove('hidden');
+            document.getElementById('tab-' + tab).className = 'w-full text-left px-4 py-2.5 rounded-xl bg-blue-50 text-blue-700 font-medium transition-colors';
+        }
+    </script>
+</body>
+</html>

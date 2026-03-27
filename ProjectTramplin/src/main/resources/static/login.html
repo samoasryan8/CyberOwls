@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Մուտք - Трамплин</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+        <div class="flex justify-center mb-6">
+            <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl">
+                Т
+            </div>
+        </div>
+        <h2 class="text-2xl font-bold text-center mb-2 text-gray-900">Բարի գալուստ Трамплин</h2>
+        <p class="text-center text-gray-500 mb-6 text-sm">Մուտք գործեք ձեր հաշիվ</p>
+        
+        <form id="loginForm" class="space-y-4">
+            <!-- Սա միայն նախատիպի համար է, որպեսզի հեշտ փոխեք դերերը -->
+            <div class="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                <label class="block text-sm font-bold text-blue-800 mb-2">Արագ Մուտք (Թեստավորման համար)</label>
+                <select id="quickLogin" class="w-full px-3 py-2.5 bg-white border border-blue-200 rounded-lg text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all">
+                    <option value='{"email":"student1@test.com","name":"Արամ Խաչատրյան","role":"APPLICANT"}'>Արամ Խաչատրյան (APPLICANT)</option>
+                    <option value='{"email":"student2@test.com","name":"Աննա Հովհաննիսյան","role":"APPLICANT"}'>Աննա Հովհաննիսյան (APPLICANT)</option>
+                    <option value='{"email":"employer1@test.com","name":"TechSys Armenia","role":"EMPLOYER"}'>TechSys Armenia (EMPLOYER)</option>
+                    <option value='{"email":"employer2@test.com","name":"GlobalWeb LLC","role":"EMPLOYER"}'>GlobalWeb LLC (EMPLOYER)</option>
+                    <option value='{"email":"curator1@test.com","name":"ԵՊՀ Կարիերայի Կենտրոն","role":"CURATOR"}'>ԵՊՀ Կարիերայի Կենտրոն (CURATOR)</option>
+                    <option value='{"email":"curator2@test.com","name":"ՀԱՊՀ Կարիերայի Կենտրոն","role":"CURATOR"}'>ՀԱՊՀ Կարիերայի Կենտրոն (CURATOR)</option>
+                    <option value='{"email":"admin@test.com","name":"Գլխավոր Ադմինիստրատոր","role":"ADMIN"}'>Գլխավոր Ադմինիստրատոր (ADMIN)</option>
+                </select>
+                <p class="text-xs text-blue-600 mt-2">Ընտրեք պատրաստի օգտատերերից մեկին՝ նրա դերով համակարգ մտնելու համար:</p>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 font-medium transition-colors mt-2">Մուտք գործել</button>
+        </form>
+        
+        <p class="text-center text-sm text-gray-500 mt-6">
+            Չունե՞ք հաշիվ: <a href="register.html" class="text-blue-600 hover:underline font-medium">Գրանցվել</a>
+        </p>
+    </div>
+
+    <script src="/js/auth.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const selectedUser = JSON.parse(document.getElementById('quickLogin').value);
+            login(selectedUser.email, selectedUser.name, selectedUser.role);
+        });
+    </script>
+</body>
+</html>
